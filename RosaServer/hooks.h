@@ -1,0 +1,134 @@
+#pragma once
+#include "structs.h"
+#include "subhook.h"
+
+namespace Hooks {
+extern subhook::Hook subRosaPutsHook;
+int subRosaPuts(const char* str);
+extern subhook::Hook subRosa__printf_chkHook;
+int subRosa__printf_chk(int flag, const char* format, ...);
+
+extern subhook::Hook resetGameHook;
+void resetGame();
+
+extern subhook::Hook logicSimulationHook;
+void logicSimulation();
+extern subhook::Hook logicSimulationRaceHook;
+void logicSimulationRace();
+extern subhook::Hook logicSimulationRoundHook;
+void logicSimulationRound();
+extern subhook::Hook logicSimulationWorldHook;
+void logicSimulationWorld();
+extern subhook::Hook logicSimulationTerminatorHook;
+void logicSimulationTerminator();
+extern subhook::Hook logicSimulationCoopHook;
+void logicSimulationCoop();
+extern subhook::Hook logicSimulationVersusHook;
+void logicSimulationVersus();
+extern subhook::Hook logicPlayerActionsHook;
+void logicPlayerActions(int playerID);
+
+extern subhook::Hook physicsSimulationHook;
+void physicsSimulation();
+extern subhook::Hook serverReceiveHook;
+int serverReceive();
+extern subhook::Hook serverSendHook;
+void serverSend();
+extern subhook::Hook writePacketHook;
+void writePacket(int connectionID, int playerID);
+extern subhook::Hook sendPacketHook;
+void sendPacket(unsigned int address, unsigned short port);
+extern subhook::Hook bulletSimulationHook;
+void bulletSimulation();
+extern subhook::Hook bondSimulationHook;
+void bondSimulation();
+extern subhook::Hook vehicleSimulationHook;
+void vehicleSimulation();
+extern subhook::Hook economyCarMarketHook;
+void economyCarMarket();
+extern subhook::Hook itemWeaponSimulationHook;
+void itemWeaponSimulation(int itemID);
+extern subhook::Hook trainSimulationHook;
+void trainSimulation(int vehicleID);
+extern subhook::Hook humanCalculateArmAnglesHook;
+void humanCalculateArmAngles(int humanID);
+extern subhook::Hook humanCollideHumanHook;
+void humanCollideHuman(int humanID);
+
+extern subhook::Hook saveAccountsServerHook;
+void saveAccountsServer();
+
+extern subhook::Hook createAccountByJoinTicketHook;
+int createAccountByJoinTicket(int identifier, unsigned int ticket);
+extern subhook::Hook serverSendConnectResponseHook;
+void serverSendConnectResponse(unsigned int address, unsigned int port,
+                               const char* message);
+
+extern subhook::Hook createPlayerHook;
+int createPlayer();
+extern subhook::Hook deletePlayerHook;
+void deletePlayer(int playerID);
+extern subhook::Hook createHumanHook;
+int createHuman(Vector* pos, RotMatrix* rot, int playerID);
+extern subhook::Hook deleteHumanHook;
+void deleteHuman(int humanID);
+extern subhook::Hook createItemHook;
+int createItem(int type, Vector* pos, Vector* vel, RotMatrix* rot);
+extern subhook::Hook deleteItemHook;
+void deleteItem(int itemID);
+extern subhook::Hook createBulletHook;
+int createBullet(int bulletType, Vector* pos, Vector* vel, int playerID);
+extern subhook::Hook createEventCreateVehicleHook;
+void createEventCreateVehicle(int vehicleID);
+extern subhook::Hook createVehicleHook;
+int createVehicle(int type, Vector* pos, Vector* vel, RotMatrix* rot, int color);
+extern subhook::Hook deleteVehicleHook;
+void deleteVehicle(int vehicleID);
+extern subhook::Hook createTrafficHook;
+void createTraffic(int amount);
+extern subhook::Hook createParticleHook;
+int createParticle(int unk, int type, Vector* pos, Vector* vel, int veh);
+
+extern subhook::Hook linkItemHook;
+int linkItem(int itemID, int childItemID, int parentHumanID, int slot);
+extern subhook::Hook itemComputerInputHook;
+void itemComputerInput(int itemID, unsigned int character);
+extern subhook::Hook humanApplyDamageHook;
+void humanApplyDamage(int humanID, int bone, int unk, int damage);
+extern subhook::Hook humanCollisionVehicleHook;
+void humanCollisionVehicle(int humanID, int vehicleID);
+extern subhook::Hook vehicleApplyDamageHook;
+void vehicleApplyDamage(int vehicleID, int damage);
+extern subhook::Hook humanGrabbingHook;
+void humanGrabbing(int humanID);
+extern subhook::Hook grenadeExplosionHook;
+void grenadeExplosion(int itemID);
+extern subhook::Hook serverPlayerMessageHook;
+int serverPlayerMessage(int playerID, char* message);
+extern subhook::Hook playerAIHook;
+void playerAI(int playerID);
+extern subhook::Hook playerDeathTaxHook;
+void playerDeathTax(int playerID);
+
+//extern subhook::Hook addCollisionRigidBodyOnRigidBodyHook;
+//void addCollisionRigidBodyOnRigidBody(int aBodyID, int bBodyID, Vector* aLocalPos, Vector* bLocalPos, Vector* normal, float, float, float, float);
+
+extern subhook::Hook createEventMessageHook;
+void createEventMessage(int speakerType, char* message, int speakerID, int distance);
+extern subhook::Hook createEventUpdatePlayerHook;
+void createEventUpdatePlayer(int id);
+extern subhook::Hook createEventUpdateHumanHook;
+void createEventUpdateHuman(int id);
+extern subhook::Hook createEventUpdateItemHook;
+void createEventUpdateItem(int id);
+extern subhook::Hook createEventUpdateItemInfoHook;
+void createEventUpdateItemInfo(int id);
+extern subhook::Hook createEventUpdateVehicleHook;
+void createEventUpdateVehicle(int vehicleID, int updateType, int partID, Vector* pos, Vector* normal);
+extern subhook::Hook createEventBulletHitHook;
+void createEventBulletHit(int unk, int hitType, Vector* pos, Vector* normal);
+extern subhook::Hook createEventBulletHook;
+void createEventBullet(int bulletType, Vector* pos, Vector* vel, int itemID);
+extern subhook::Hook lineIntersectHumanHook;
+int lineIntersectHuman(int humanID, Vector* posA, Vector* posB);
+};  // namespace Hooks
